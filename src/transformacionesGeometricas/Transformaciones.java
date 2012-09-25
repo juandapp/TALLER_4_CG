@@ -31,13 +31,15 @@ public class Transformaciones {
     public Point rotacion(Point pc, Point p, int grados) {
         Point pr = new Point();
         double dgrados = (double) grados;
+        double gradosPiRand = dgrados*Math.PI / 180.0;
         int xc = pc.x;
         int yc = pc.y;
         int x = p.x;
         int y = p.y;
-
-        pr.x = (int) (xc + ((x - xc) * Math.cos(dgrados)) - ((y - yc) * Math.sin(dgrados)));
-        pr.y = (int) (yc + ((x - xc) * Math.sin(dgrados)) + ((y - yc) * Math.cos(dgrados)));
+        
+        System.out.println("cos 20="+Math.sin((double)20*Math.PI/180.0));
+        pr.x = (int) Math.rint(xc + ((x - xc) * Math.cos(gradosPiRand)) - ((y - yc) * Math.sin(gradosPiRand)));
+        pr.y = (int) Math.rint(yc + ((x - xc) * Math.sin(gradosPiRand)) + ((y - yc) * Math.cos(gradosPiRand)));
 
         return pr;
     }
@@ -52,16 +54,27 @@ public class Transformaciones {
         int yc = ps.y;
         int x = p.x;
         int y = p.y;
-        System.out.println(xs+"  "+ys);
 
-        pr.x =(int) (xc + xs * (double)(x - xc));
-        pr.y =(int) (yc + ys * (double)(y - yc));
+        pr.x = (int) (xc + xs * (double) (x - xc));
+        pr.y = (int) (yc + ys * (double) (y - yc));
 
         return pr;
     }
 
     public void pruebaEscalacion() {
-        Point escalacion = escalacion(new Point(0, 0), new Point(7, 1), (double)1/2,(double)1/3);
-        System.out.println(escalacion.x+"  "+escalacion.y);
+        Point escalacion = escalacion(new Point(0, 0), new Point(7, 1), (double) 1 / 2, (double) 1 / 3);
+        System.out.println((double) 1 / 2 + "  " + (double) 1 / 3);
+        System.out.println("escalacion: " + escalacion.x + "  " + escalacion.y);
+    }
+
+    public void pruebaTraslacion() {
+        Point traslacion = traslacion(new Point(10, 10), 3, 8);
+        System.out.println("traslacion: " + traslacion.x + "  " + traslacion.y);
+    }
+
+    public void pruebaRotacion() {
+        Point rotacion = rotacion(new Point(0, 0), new Point(7, 2), 20);
+        System.out.println(7 + "  " +2);
+        System.out.println("rotacion grados "+20+": " + rotacion.x + "  " + rotacion.y);
     }
 }
