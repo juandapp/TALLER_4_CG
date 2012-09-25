@@ -4,13 +4,16 @@
  */
 package taller_4_cg;
 
+import transformacionesGeometricas.Transformaciones;
+
 /**
  *
- * @author juandapp
+ * @author juandapp 
  */
 public class TALLER_4_CG {
 
     public static void main(String[] args) {
-
+        Transformaciones t = new Transformaciones();
+        t.pruebaEscalacion();
     }
 }
