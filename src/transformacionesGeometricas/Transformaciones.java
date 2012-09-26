@@ -18,7 +18,7 @@ public class Transformaciones {
 ///    Point p, punto a trasladar
 ///    int tx, valor traslacion x
 ///    int ty, valor traslacion y
-    public Point traslacion(Point p, int tx, int ty) {
+    public static Point traslacion(Point p, int tx, int ty) {
         Point pt = new Point();
         pt.x = p.x + tx;
         pt.y = p.y + ty;
@@ -47,7 +47,7 @@ public class Transformaciones {
 ///    Point p , punto a escalar
 ///    Point escalares, valores de la escalacion en x y y
 
-    public Point escalacion(Point ps, Point p, double xs, double ys) {
+    public static Point escalacion(Point ps, Point p, double xs, double ys) {
         Point pr = new Point();
 
         int xc = ps.x;
