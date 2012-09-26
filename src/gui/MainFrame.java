@@ -41,7 +41,7 @@ public class MainFrame extends javax.swing.JFrame{
     private ManejadorCanvas mc;
     /// arrayPuntosExtremos, arreglo de los puntos extremos de cada linea
     private ArrayList<Point> arrayTodosPuntosPintados, arrayPuntosExtremos;  
-    private String stringPuntos;
+
 
     public MainFrame() {
         initComponents();
@@ -260,6 +260,8 @@ public class MainFrame extends javax.swing.JFrame{
             arrayPuntosExtremos.add(new Point(ixTemp, iyTemp));
             puntoMedio(ixTemp, iyTemp, ixInicial, iyInicial);
             canvas.enable(false);
+            jTFxActual.setText(null);
+            jTFyActual.setText(null);
         }
         
     }//GEN-LAST:event_formKeyPressed
