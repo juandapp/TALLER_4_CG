@@ -18,7 +18,7 @@ public class Transformaciones {
 ///    Point p, punto a trasladar
 ///    int tx, valor traslacion x
 ///    int ty, valor traslacion y
-    public Point traslacion(Point p, int tx, int ty) {
+    public static Point traslacion(Point p, int tx, int ty) {
         Point pt = new Point();
         pt.x = p.x + tx;
         pt.y = p.y + ty;
