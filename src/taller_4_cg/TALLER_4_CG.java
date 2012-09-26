@@ -17,5 +17,6 @@ public class TALLER_4_CG {
         t.pruebaEscalacion();
         t.pruebaTraslacion();
         t.pruebaRotacion();
+        ///
     }
 }
