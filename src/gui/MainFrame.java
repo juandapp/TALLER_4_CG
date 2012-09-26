@@ -34,13 +34,13 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class MainFrame extends javax.swing.JFrame{
+public class MainFrame extends javax.swing.JFrame {
 
     private int iContadorMouse;
     private int ixInicial, ixFinal, iyInicial, iyFinal, ixTemp, iyTemp;
     private ManejadorCanvas mc;
     /// arrayPuntosExtremos, arreglo de los puntos extremos de cada linea
-    private ArrayList<Point> arrayTodosPuntosPintados, arrayPuntosExtremos;  
+    private ArrayList<Point> arrayTodosPuntosPintados, arrayPuntosExtremos;
     private String stringPuntos;
 
     public MainFrame() {
@@ -197,16 +197,16 @@ public class MainFrame extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        
+
         canvas.repaint();
-        
+
         ///  valores de las cajas de texto de la gui vacias
         jTFxi.setText(null);
         jTFyi.setText(null);
         jTFxActual.setText(null);
         jTFyActual.setText(null);
         jTAListaPuntos.setText(null);
-        
+
         /// reinicializar variables clase
         iContadorMouse = 0;
         ixInicial = 0;
@@ -215,7 +215,7 @@ public class MainFrame extends javax.swing.JFrame{
         iyFinal = 0;
         arrayTodosPuntosPintados.clear();
         arrayPuntosExtremos.clear();
-        
+
         /// habilitar canvas
         canvas.enable(true);
     }//GEN-LAST:event_jBLimpiarActionPerformed
@@ -238,9 +238,9 @@ public class MainFrame extends javax.swing.JFrame{
             jTFxi.setText(Integer.toString(ixInicial));
             jTFyi.setText(Integer.toString(iyInicial));
             ixTemp = ixInicial;
-            iyTemp = iyInicial;            
+            iyTemp = iyInicial;
             iContadorMouse++;
-        } else {            
+        } else {
             ixFinal = mc.javaTorealX(evt.getX());
             iyFinal = mc.javaTorealY(evt.getY());
             arrayPuntosExtremos.add(new Point(ixFinal, iyFinal));
@@ -256,12 +256,14 @@ public class MainFrame extends javax.swing.JFrame{
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         System.out.println(evt.getKeyCode());
         /// el codigo de la letra f es 70
-        if(evt.getKeyCode() == 70 && iContadorMouse > 2){            
+        if (evt.getKeyCode() == 70 && iContadorMouse > 2) {
             arrayPuntosExtremos.add(new Point(ixTemp, iyTemp));
             puntoMedio(ixTemp, iyTemp, ixInicial, iyInicial);
             canvas.enable(false);
+            jTFxActual.setText(null);
+            jTFyActual.setText(null);
         }
-        
+
     }//GEN-LAST:event_formKeyPressed
 
     void puntoMedio(int nx1, int ny1, int nx2, int ny2) {
@@ -277,28 +279,28 @@ public class MainFrame extends javax.swing.JFrame{
         }
 
     }
-    
-    void agregarPuntoExtremoaArray(int x, int y){
+
+    void agregarPuntoExtremoaArray(int x, int y) {
         Point p = new Point(x, y);
         arrayPuntosExtremos.add(p);
     }
-    
-    
-    void agregarPuntoPintdosaArray(int x, int y){
+
+    void agregarPuntoPintdosaArray(int x, int y) {
         Point p = new Point(x, y);
         arrayTodosPuntosPintados.add(p);
     }
-    
 
-    void reescribirJTextAreaPuntos(){
-        String texto="";
+    void reescribirJTextAreaPuntos() {
+        String texto = "";
         for (int i = 0; i < arrayPuntosExtremos.size(); i++) {
             Point puntoGet = arrayPuntosExtremos.get(i);
-            texto += puntoGet.toString();
+            puntoGet = arrayPuntosExtremos.get(i);
+            texto += "(" + puntoGet.x + "," + puntoGet.y + ") \n";
         }
+
         jTAListaPuntos.setText(texto);
     }
-    
+
     public static void main(String args[]) {
 
         try {
@@ -316,7 +318,6 @@ public class MainFrame extends javax.swing.JFrame{
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 new MainFrame().setVisible(true);
             }
@@ -343,6 +344,4 @@ public class MainFrame extends javax.swing.JFrame{
     private javax.swing.JTextField jTFyActual;
     private javax.swing.JTextField jTFyi;
     // End of variables declaration//GEN-END:variables
-
-
 }
