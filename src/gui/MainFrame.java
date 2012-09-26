@@ -29,16 +29,18 @@ package gui;
 
 import algoritmoLinea.PuntoMedio;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame{
 
     private int iContadorMouse;
-    private int ixInicial, ixFinal, iyInicial, iyFinal;
+    private int ixInicial, ixFinal, iyInicial, iyFinal, ixTemp, iyTemp;
     private ManejadorCanvas mc;
-    private String sAlgoritmoEjecutar;
     private ArrayList<Point> arrayPuntos;
+    private String stringPuntos;
 
     public MainFrame() {
         initComponents();
@@ -71,15 +73,12 @@ public class MainFrame extends javax.swing.JFrame {
         jTFyActual = new javax.swing.JTextField();
         jLpuntoFinal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTAListaPuntos = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TALLER 1: Primitivas de Raster - Conversión de Rectas");
         addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                formKeyTyped(evt);
-            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
@@ -140,7 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jBLimpiar);
-        jBLimpiar.setBounds(20, 300, 110, 30);
+        jBLimpiar.setBounds(20, 300, 110, 29);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 150, 350);
@@ -174,16 +173,17 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(20, 350, 140, 60);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTAListaPuntos.setEditable(false);
+        jTAListaPuntos.setColumns(20);
+        jTAListaPuntos.setRows(5);
+        jScrollPane1.setViewportView(jTAListaPuntos);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(220, 380, 450, 90);
 
         jLabel1.setText("Lista de puntos");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 360, 120, 18);
+        jLabel1.setBounds(220, 360, 120, 17);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-738)/2, (screenSize.height-512)/2, 738, 512);
@@ -195,6 +195,13 @@ public class MainFrame extends javax.swing.JFrame {
         jTFyi.setText(null);
         jTFxActual.setText(null);
         jTFyActual.setText(null);
+        jTAListaPuntos.setText(null);
+        iContadorMouse = 0;
+        ixInicial = 0;
+        ixFinal = 0;
+        iyInicial = 0;
+        iyFinal = 0;
+        canvas.enable(true);
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void canvasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasMouseMoved
@@ -214,24 +221,29 @@ public class MainFrame extends javax.swing.JFrame {
             arrayPuntos.add(new Point(ixInicial, iyInicial));
             jTFxi.setText(Integer.toString(ixInicial));
             jTFyi.setText(Integer.toString(iyInicial));
+            ixTemp = ixInicial;
+            iyTemp = iyInicial;            
             iContadorMouse++;
         } else {            
             ixFinal = mc.javaTorealX(evt.getX());
             iyFinal = mc.javaTorealY(evt.getY());
             arrayPuntos.add(new Point(ixFinal, iyFinal));
             iContadorMouse++;
-            puntoMedio(ixInicial, iyInicial, ixFinal, iyFinal);
-            ixInicial = ixFinal;
-            iyInicial = iyFinal;
+            puntoMedio(ixTemp, iyTemp, ixFinal, iyFinal);
+            ixTemp = ixFinal;
+            iyTemp = iyFinal;
         }
+        requestFocus();
     }//GEN-LAST:event_canvasMouseClicked
-
-    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-        System.out.println(evt.getKeyCode());
-    }//GEN-LAST:event_formKeyTyped
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         System.out.println(evt.getKeyCode());
+        /// el codigo de la letra f es 70
+        if(evt.getKeyCode() == 70 && iContadorMouse > 2){
+            puntoMedio(ixTemp, iyTemp, ixInicial, iyInicial);
+            canvas.enable(false);
+        }
+        
     }//GEN-LAST:event_formKeyPressed
 
     void puntoMedio(int nx1, int ny1, int nx2, int ny2) {
@@ -246,6 +258,8 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
     }
+    
+    
 
     public static void main(String args[]) {
 
@@ -284,10 +298,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTAListaPuntos;
     private javax.swing.JTextField jTFxActual;
     private javax.swing.JTextField jTFxi;
     private javax.swing.JTextField jTFyActual;
     private javax.swing.JTextField jTFyi;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+
 }
