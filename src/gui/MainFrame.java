@@ -54,6 +54,8 @@ public class MainFrame extends javax.swing.JFrame {
         arrayPuntosExtremos = new ArrayList<Point>();
         hablitarGuiTransformaciones(false);
         valoresPorDefectoFunciones();
+        
+        ponerToolTip();
     }
 
     @SuppressWarnings("unchecked")
@@ -82,20 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jBRotar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTFtxTrasladar = new javax.swing.JTextField();
-        jTFtyTrasladar = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jTFPxRotacion = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTFGradosRotar = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTFPyRotacion = new javax.swing.JTextField();
-        jBTrasladar = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
+        jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTFPcxEscalacion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -105,6 +94,20 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTFPsyEscalacion = new javax.swing.JTextField();
         jBEscalar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTFPxRotacion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTFPyRotacion = new javax.swing.JTextField();
+        jTFGradosRotar = new javax.swing.JTextField();
+        jBRotar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTFtxTrasladar = new javax.swing.JTextField();
+        jTFtyTrasladar = new javax.swing.JTextField();
+        jBTrasladar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TALLER 4: Transformaciones Geometricas");
@@ -115,6 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Canvas"));
         jPanel1.setLayout(null);
 
         canvas.setBackground(java.awt.Color.white);
@@ -130,10 +134,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(canvas);
-        canvas.setBounds(0, 0, 520, 460);
+        canvas.setBounds(10, 20, 520, 460);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(150, 0, 520, 460);
+        jPanel1.setBounds(140, 0, 540, 490);
 
         jPanel2.setLayout(null);
 
@@ -224,111 +228,48 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel2.setText("* Para cerrar el poligono presionar ' f '");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(150, 470, 270, 18);
+        jLabel2.setBounds(140, 490, 270, 18);
 
         jPanel5.setLayout(null);
 
-        jBRotar.setText("Rotar");
-        jBRotar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRotarActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jBRotar);
-        jBRotar.setBounds(160, 70, 110, 30);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Tx");
-        jPanel5.add(jLabel4);
-        jLabel4.setBounds(10, 10, 30, 30);
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ty");
-        jPanel5.add(jLabel3);
-        jLabel3.setBounds(80, 10, 30, 30);
-
-        jTFtxTrasladar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFtxTrasladar);
-        jTFtxTrasladar.setBounds(40, 10, 42, 30);
-
-        jTFtyTrasladar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFtyTrasladar);
-        jTFtyTrasladar.setBounds(110, 10, 40, 30);
-        jPanel5.add(jSeparator2);
-        jSeparator2.setBounds(0, 130, 280, 10);
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Px");
-        jPanel5.add(jLabel5);
-        jLabel5.setBounds(10, 60, 30, 30);
-
-        jTFPxRotacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPxRotacion);
-        jTFPxRotacion.setBounds(40, 60, 42, 30);
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Py");
-        jPanel5.add(jLabel6);
-        jLabel6.setBounds(80, 60, 30, 30);
-
-        jTFGradosRotar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFGradosRotar);
-        jTFGradosRotar.setBounds(110, 90, 40, 30);
-
-        jLabel7.setText("Grados");
-        jPanel5.add(jLabel7);
-        jLabel7.setBounds(60, 90, 50, 30);
-
-        jTFPyRotacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPyRotacion);
-        jTFPyRotacion.setBounds(110, 60, 40, 30);
-
-        jBTrasladar.setText("Trasladar");
-        jBTrasladar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBTrasladarActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jBTrasladar);
-        jBTrasladar.setBounds(160, 10, 110, 30);
-        jPanel5.add(jSeparator3);
-        jSeparator3.setBounds(0, 50, 280, 10);
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Escalación"));
+        jPanel6.setLayout(null);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Px");
-        jPanel5.add(jLabel8);
-        jLabel8.setBounds(10, 140, 30, 30);
+        jPanel6.add(jLabel8);
+        jLabel8.setBounds(0, 20, 30, 30);
 
         jTFPcxEscalacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPcxEscalacion);
-        jTFPcxEscalacion.setBounds(40, 140, 42, 30);
+        jPanel6.add(jTFPcxEscalacion);
+        jTFPcxEscalacion.setBounds(30, 20, 42, 30);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Py");
-        jPanel5.add(jLabel9);
-        jLabel9.setBounds(80, 140, 30, 30);
+        jPanel6.add(jLabel9);
+        jLabel9.setBounds(70, 20, 30, 30);
 
         jTFPcyEscalacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPcyEscalacion);
-        jTFPcyEscalacion.setBounds(110, 140, 40, 30);
+        jPanel6.add(jTFPcyEscalacion);
+        jTFPcyEscalacion.setBounds(100, 20, 40, 30);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Sx");
-        jPanel5.add(jLabel10);
-        jLabel10.setBounds(10, 180, 30, 30);
+        jPanel6.add(jLabel10);
+        jLabel10.setBounds(0, 60, 30, 30);
 
         jTFPsxEscalacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPsxEscalacion);
-        jTFPsxEscalacion.setBounds(40, 180, 42, 30);
+        jPanel6.add(jTFPsxEscalacion);
+        jTFPsxEscalacion.setBounds(30, 60, 42, 30);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Sy");
-        jPanel5.add(jLabel11);
-        jLabel11.setBounds(80, 180, 30, 30);
+        jPanel6.add(jLabel11);
+        jLabel11.setBounds(70, 60, 30, 30);
 
         jTFPsyEscalacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        jPanel5.add(jTFPsyEscalacion);
-        jTFPsyEscalacion.setBounds(110, 180, 40, 30);
+        jPanel6.add(jTFPsyEscalacion);
+        jTFPsyEscalacion.setBounds(100, 60, 40, 30);
 
         jBEscalar.setText("Escalar");
         jBEscalar.addActionListener(new java.awt.event.ActionListener() {
@@ -336,14 +277,91 @@ public class MainFrame extends javax.swing.JFrame {
                 jBEscalarActionPerformed(evt);
             }
         });
-        jPanel5.add(jBEscalar);
-        jBEscalar.setBounds(160, 160, 110, 30);
+        jPanel6.add(jBEscalar);
+        jBEscalar.setBounds(150, 40, 110, 30);
+
+        jPanel5.add(jPanel6);
+        jPanel6.setBounds(0, 170, 280, 100);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Rotación"));
+        jPanel7.setLayout(null);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Px");
+        jPanel7.add(jLabel5);
+        jLabel5.setBounds(10, 20, 30, 30);
+
+        jTFPxRotacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jPanel7.add(jTFPxRotacion);
+        jTFPxRotacion.setBounds(40, 20, 42, 30);
+
+        jLabel7.setText("Grados");
+        jPanel7.add(jLabel7);
+        jLabel7.setBounds(60, 50, 50, 30);
+
+        jTFPyRotacion.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jPanel7.add(jTFPyRotacion);
+        jTFPyRotacion.setBounds(110, 20, 40, 30);
+
+        jTFGradosRotar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jPanel7.add(jTFGradosRotar);
+        jTFGradosRotar.setBounds(110, 50, 40, 30);
+
+        jBRotar.setText("Rotar");
+        jBRotar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRotarActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jBRotar);
+        jBRotar.setBounds(160, 30, 110, 30);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Py");
+        jPanel7.add(jLabel6);
+        jLabel6.setBounds(80, 20, 30, 30);
+
+        jPanel5.add(jPanel7);
+        jPanel7.setBounds(0, 70, 280, 100);
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Traslación"));
+        jPanel8.setLayout(null);
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Tx");
+        jPanel8.add(jLabel4);
+        jLabel4.setBounds(0, 20, 30, 30);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Ty");
+        jPanel8.add(jLabel3);
+        jLabel3.setBounds(70, 20, 30, 30);
+
+        jTFtxTrasladar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jPanel8.add(jTFtxTrasladar);
+        jTFtxTrasladar.setBounds(30, 20, 42, 30);
+
+        jTFtyTrasladar.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        jPanel8.add(jTFtyTrasladar);
+        jTFtyTrasladar.setBounds(100, 20, 40, 30);
+
+        jBTrasladar.setText("Trasladar");
+        jBTrasladar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTrasladarActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jBTrasladar);
+        jBTrasladar.setBounds(150, 20, 110, 30);
+
+        jPanel5.add(jPanel8);
+        jPanel8.setBounds(0, 0, 280, 70);
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(680, 10, 280, 320);
+        jPanel5.setBounds(690, 10, 280, 300);
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-976)/2, (screenSize.height-522)/2, 976, 522);
+        setBounds((screenSize.width-992)/2, (screenSize.height-592)/2, 992, 592);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
@@ -356,9 +374,9 @@ public class MainFrame extends javax.swing.JFrame {
         jTFxActual.setText(null);
         jTFyActual.setText(null);
         jTAListaPuntos.setText(null);
-        
+
         valoresPorDefectoFunciones();
-        
+
         /// reinicializar variables clase
         iContadorMouse = 0;
         ixInicial = 0;
@@ -445,6 +463,7 @@ public class MainFrame extends javax.swing.JFrame {
         try {
             int tx = Integer.parseInt(jTFtxTrasladar.getText());
             int ty = Integer.parseInt(jTFtyTrasladar.getText());
+
             System.out.println(arrayTodosPuntosPintados.size());
             for (int i = 0; i < arrayTodosPuntosPintados.size(); i++) {
                 Point pointGet = arrayTodosPuntosPintados.get(i);
@@ -558,6 +577,22 @@ public class MainFrame extends javax.swing.JFrame {
         jTFPsyEscalacion.setText("0");
     }
 
+    void ponerToolTip() {
+        jTFPxRotacion.setToolTipText("Coordenada x del centro de rotación");
+         jTFPyRotacion.setToolTipText("Coordenada y del centro de rotación");
+        jTFGradosRotar.setToolTipText("Grados de rotación");
+
+        /// para traslacion
+        jTFtxTrasladar.setToolTipText("Valor traslación en el eje X");
+        jTFtyTrasladar.setToolTipText("Valor traslación en el eje Y");
+
+        // para escalacion        
+        jTFPcxEscalacion.setToolTipText("Coordenada x del centro de escalación");
+        jTFPcyEscalacion.setToolTipText("Coordenada y del centro de escalación");
+        jTFPsxEscalacion.setToolTipText("Valor escalación en el eje X");
+        jTFPsyEscalacion.setToolTipText("Valor escalación en el eje Y");
+    }
+
     public static void main(String args[]) {
 
         try {
@@ -609,10 +644,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextArea jTAListaPuntos;
     private javax.swing.JTextField jTFGradosRotar;
     private javax.swing.JTextField jTFPcxEscalacion;
