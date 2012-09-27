@@ -28,7 +28,7 @@
 
 
 
-package algoritmoLinea;
+package logica;
 
 //~--- JDK imports ------------------------------------------------------------
 

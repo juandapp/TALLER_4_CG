@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package transformacionesGeometricas;
+package logica;
 
 import java.awt.Point;
 
@@ -28,7 +28,7 @@ public class Transformaciones {
 ///    Point pc, punto sobre el cual se rota
 ///    Point p , punto a rotar
 ///    int grados, grados de rotacion
-    public Point rotacion(Point pc, Point p, int grados) {
+    public static Point rotacion(Point pc, Point p, int grados) {
         Point pr = new Point();
         double dgrados = (double) grados;
         double gradosPiRand = dgrados*Math.PI / 180.0;
