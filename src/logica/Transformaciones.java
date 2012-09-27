@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package transformacionesGeometricas;
+package logica;
 
 import java.awt.Point;
 
@@ -28,7 +28,7 @@ public class Transformaciones {
 ///    Point pc, punto sobre el cual se rota
 ///    Point p , punto a rotar
 ///    int grados, grados de rotacion
-    public Point rotacion(Point pc, Point p, int grados) {
+    public static Point rotacion(Point pc, Point p, int grados) {
         Point pr = new Point();
         double dgrados = (double) grados;
         double gradosPiRand = dgrados*Math.PI / 180.0;
@@ -45,18 +45,18 @@ public class Transformaciones {
     }
 ///    Point pc, punto del centro de la escalacion
 ///    Point p , punto a escalar
-///    Point escalares, valores de la escalacion en x y y
+///    double xs, ys, valores de la escalacion en x y y
 
-    public static Point escalacion(Point ps, Point p, double xs, double ys) {
+    public static Point escalacion(Point pc, Point p, double sx, double sy) {
         Point pr = new Point();
 
-        int xc = ps.x;
-        int yc = ps.y;
+        int xc = pc.x;
+        int yc = pc.y;
         int x = p.x;
         int y = p.y;
 
-        pr.x = (int) (xc + xs * (double) (x - xc));
-        pr.y = (int) (yc + ys * (double) (y - yc));
+        pr.x = (int) (xc + sx * (double) (x - xc));
+        pr.y = (int) (yc + sy * (double) (y - yc));
 
         return pr;
     }

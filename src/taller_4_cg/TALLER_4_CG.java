@@ -4,7 +4,7 @@
  */
 package taller_4_cg;
 
-import transformacionesGeometricas.Transformaciones;
+import logica.Transformaciones;
 
 /**
  *
