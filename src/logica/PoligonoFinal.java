@@ -463,7 +463,7 @@ public class PoligonoFinal {
             new Point(5, 5), new Point(5, 10), new Point(-3, 8), new Point(0, 0)};
         Point[] puntosB = {new Point(-4, -5), new Point(0, -3), new Point(8, -8),
             new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 8)};
-        pol.algoritmoPoligono(puntosA);
+        pol.algoritmoPoligono(puntosB);
 
     }
 }
