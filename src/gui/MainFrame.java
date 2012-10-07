@@ -30,8 +30,11 @@ package gui;
 import logica.PuntoMedio;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UnsupportedLookAndFeelException;
+import logica.PoligonoFinal;
 import logica.Transformaciones;
 
 public class MainFrame extends javax.swing.JFrame {
@@ -54,8 +57,12 @@ public class MainFrame extends javax.swing.JFrame {
         arrayPuntosExtremos = new ArrayList<Point>();
         hablitarGuiTransformaciones(false);
         valoresPorDefectoFunciones();
-        
+
         ponerToolTip();
+    }
+
+    public ArrayList<Point> getArrayPuntosExtremos() {
+        return arrayPuntosExtremos;
     }
 
     @SuppressWarnings("unchecked")
@@ -366,6 +373,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
 
+
         canvas.repaint();
 
         ///  valores de las cajas de texto de la gui vacias
@@ -377,19 +385,22 @@ public class MainFrame extends javax.swing.JFrame {
 
         valoresPorDefectoFunciones();
 
+
         /// reinicializar variables clase
         iContadorMouse = 0;
         ixInicial = 0;
         ixFinal = 0;
         iyInicial = 0;
         iyFinal = 0;
-        arrayTodosPuntosPintados.clear();
-        arrayPuntosExtremos.clear();
+        arrayTodosPuntosPintados = new ArrayList<Point>();
+        arrayPuntosExtremos = new ArrayList<Point>();
+
 
         /// habilitar canvas
         canvas.enable(true);
         //deshabiliar funciones de transformaciones de la gui
         hablitarGuiTransformaciones(false);
+
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void canvasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasMouseMoved
@@ -401,7 +412,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_canvasMouseMoved
 
     private void canvasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvasMouseClicked
-
         if (iContadorMouse == 0) {
             ixInicial = mc.javaTorealX(evt.getX());
             iyInicial = mc.javaTorealY(evt.getY());
@@ -435,11 +445,24 @@ public class MainFrame extends javax.swing.JFrame {
             jTFyActual.setText("");
             canvas.enable(false);
             hablitarGuiTransformaciones(true);
+            ArrayList<Point> a = getArrayPuntosExtremos();
+            Point[] p = new Point[a.size()];
+            Point[] toArray = a.toArray(p);
+            pintarPoligono(toArray);
+
+            for (int i = 0; i < p.length; i++) {
+                Point puntoAux = p[i];
+                agregarPuntoPintdosaArray(puntoAux.x, puntoAux.y);
+            }
+
+
         }
+
 
     }//GEN-LAST:event_formKeyPressed
 
     private void jBRotarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRotarActionPerformed
+                  
         try {
             int px = Integer.parseInt(jTFPxRotacion.getText());
             int py = Integer.parseInt(jTFPyRotacion.getText());
@@ -464,7 +487,7 @@ public class MainFrame extends javax.swing.JFrame {
             int tx = Integer.parseInt(jTFtxTrasladar.getText());
             int ty = Integer.parseInt(jTFtyTrasladar.getText());
 
-            System.out.println(arrayTodosPuntosPintados.size());
+            System.out.println(arrayTodosPuntosPintados.size() + "*****************************************\nS");
             for (int i = 0; i < arrayTodosPuntosPintados.size(); i++) {
                 Point pointGet = arrayTodosPuntosPintados.get(i);
                 Point pointTraslacion = Transformaciones.traslacion(pointGet, tx, ty);
@@ -497,6 +520,30 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBEscalarActionPerformed
 
+    private void pintarPoligono(Point[] p) {
+        Point[] puntosA = {new Point(-40, -50), new Point(40, -30), new Point(80, 80),
+            new Point(50, 50), new Point(50, 100), new Point(-30, 80), new Point(0, 0)};
+
+        Point[] puntosB = {new Point(-4, -5), new Point(0, -3), new Point(8, -8),
+            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 8)};
+
+
+        PoligonoFinal pol = new PoligonoFinal();
+        ArrayList<Point> algoritmoPoligono = pol.algoritmoPoligono(p);
+        
+        
+            Point[] punto = new Point[algoritmoPoligono.size()];
+            Point[] toArray = algoritmoPoligono.toArray(punto);
+        
+        for (int i = 0; i < punto.length; i++) {
+            Point puntoAux = punto[i];
+            agregarPuntoPintdosaArray(puntoAux.x, puntoAux.y);
+        }
+        pintarCanvasArray(algoritmoPoligono);
+
+
+    }
+
     void puntoMedio(int nx1, int ny1, int nx2, int ny2) {
 
         ArrayList<Point> aListPuntosRasterizacion = PuntoMedio.Bresenham(nx1, ny1, nx2, ny2);
@@ -515,6 +562,7 @@ public class MainFrame extends javax.swing.JFrame {
         for (int i = 0; i < puntos.size(); i++) {
             Point point = puntos.get(i);
             mc.pintarPixel(point.x, point.y);
+            System.out.println("pintar " + point.x + " " + point.y);
         }
 
     }
@@ -579,7 +627,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     void ponerToolTip() {
         jTFPxRotacion.setToolTipText("Coordenada x del centro de rotación");
-         jTFPyRotacion.setToolTipText("Coordenada y del centro de rotación");
+        jTFPyRotacion.setToolTipText("Coordenada y del centro de rotación");
         jTFGradosRotar.setToolTipText("Grados de rotación");
 
         /// para traslacion
@@ -610,7 +658,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 new MainFrame().setVisible(true);
             }

@@ -29,6 +29,7 @@ package gui;
 
 //~--- JDK imports ------------------------------------------------------------
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 
 import java.util.logging.Level;
@@ -77,7 +78,7 @@ public class ManejadorCanvas {
 
         int iXjava = realTojavaX(iXreal);
         int iYjava = realTojavaY(iYreal);
-
+        gp.setColor(Color.orange);
         gp.drawLine(iXjava, iYjava, iXjava, iYjava);
     }
 
