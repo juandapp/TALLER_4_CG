@@ -23,6 +23,7 @@ public class PoligonoFinal {
     int[] indiceY;
     int[] out;
     boolean acep = false;
+    boolean acep2 = false;
     ArrayList indi;
     Vector vIniciales = new Vector();
     Vector vAux = new Vector();
@@ -87,11 +88,7 @@ public class PoligonoFinal {
             vIniciales.add(ordenVector(puntos[i - 1], puntos[i], puntos[i + 1], puntos[i].y));
             
         }
-        
-        for (int i = 0; i < vIniciales.size(); i++) {
-        System.out.println("vInicial: "+vIniciales.get(i));            
-        }
-
+    
     }
 
     //Genera el vector con los vectores finales
@@ -119,6 +116,12 @@ public class PoligonoFinal {
             if (acep && i > 1) {
                 v3 = (incrementoAutomatico(v3));
                 v3 = unirVectores(v3, vec);
+                vec = obtieneVectorFinal(vIniciales, idx);
+                
+                if(acep){
+                    v3 = unirVectores(v3, vec);
+                }
+                
                 v3 = EliminaFinales(v3, idx);
 
                 v3 = ordenarVector(v3);
@@ -160,7 +163,6 @@ public class PoligonoFinal {
 
             }
         }
-
     }
 
     //Une un vector del vector auxiliar, con el vector incrementado
@@ -466,7 +468,7 @@ public class PoligonoFinal {
         Point[] puntosA = {new Point(-4, -5), new Point(4, -3), new Point(8, 8),
             new Point(5, 5), new Point(5, 10), new Point(-3, 8), new Point(0, 0)};
         Point[] puntosB = {new Point(-4, -5), new Point(0, -3), new Point(8, -8),
-            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 7)};
+            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 8)};
         pol.algoritmoPoligono(puntosB);
 
     }
