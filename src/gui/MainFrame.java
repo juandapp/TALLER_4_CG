@@ -416,7 +416,7 @@ public class MainFrame extends javax.swing.JFrame {
             new Point(50, 50), new Point(50, 100), new Point(-30, 80), new Point(0, 0)};
 
         Point[] puntosB = {new Point(-40, -50), new Point(0, -30), new Point(80, -80),
-            new Point(50, 80), new Point(55, 120), new Point(0, 100), new Point(-50, 70)};
+            new Point(50, 80), new Point(55, 120), new Point(0, 100), new Point(-50, 80)};
 //        Point[] puntosB = {new Point(-4, -5), new Point(0, -3), new Point(8, -8),
 //            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 8)};
         pintarPoligono(puntosB);
