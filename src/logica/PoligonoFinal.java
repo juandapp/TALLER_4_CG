@@ -85,7 +85,11 @@ public class PoligonoFinal {
             }
 
             vIniciales.add(ordenVector(puntos[i - 1], puntos[i], puntos[i + 1], puntos[i].y));
-
+            
+        }
+        
+        for (int i = 0; i < vIniciales.size(); i++) {
+        System.out.println("vInicial: "+vIniciales.get(i));            
         }
 
     }
@@ -104,7 +108,7 @@ public class PoligonoFinal {
         for (int i = 0; i < text.size(); i++) {
             double[] mostrar = new double[10];
             mostrar = (double[]) text.get(i);
-            System.out.println("vectorMostrar [" + mostrar[0] + ", " + mostrar[1] + ", " + mostrar[2] + "] ");
+            //System.out.println("vectorMostrar [" + mostrar[0] + ", " + mostrar[1] + ", " + mostrar[2] + "] ");
         }
 
         for (int i = 1; i < tamaño + 1; i++) {
@@ -183,7 +187,6 @@ public class PoligonoFinal {
                 k = 0;
             }
             if (arreglo[0] == ind) {
-                System.out.println("elimina... ");
 
                 vec.remove(i);
                 i--;
@@ -214,6 +217,7 @@ public class PoligonoFinal {
 
                 acep = true;
                 System.out.println(acep);
+                vIniciales.remove(i);
 
                 return outAux;
             }
@@ -462,8 +466,24 @@ public class PoligonoFinal {
         Point[] puntosA = {new Point(-4, -5), new Point(4, -3), new Point(8, 8),
             new Point(5, 5), new Point(5, 10), new Point(-3, 8), new Point(0, 0)};
         Point[] puntosB = {new Point(-4, -5), new Point(0, -3), new Point(8, -8),
-            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 8)};
+            new Point(5, 8), new Point(5, 12), new Point(0, 10), new Point(-5, 7)};
         pol.algoritmoPoligono(puntosB);
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
